@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>TODO</title>
+  <title>Akka Cluster up and running</title>
 
   <link rel="stylesheet" href="css/reveal.css">
   <link rel="stylesheet" href="css/theme/white.css">
@@ -23,8 +23,8 @@
 
   <style>
     .reveal .license {
-      font-size: medium;
-      margin-top: 60px;
+      font-size: small;
+      margin-top: 96px;
     }
 
     .reveal section img {
@@ -32,6 +32,54 @@
       box-shadow: none;
       height: auto;
       width: auto;
+      max-width: 80%;
+      max-height: 480px;
+    }
+
+    .reveal svg {
+      background-color: white;
+      height:           400px;
+      width:            100%;
+    }
+
+    .reveal .node {
+      fill: gray;
+    }
+
+    .reveal .hidden {
+      visibility: hidden;
+    }
+
+    .reveal .node.member {
+      fill: green;
+    }
+
+    .reveal .node.unreachable {
+      fill: red;
+    }
+
+    .reveal .node.joining {
+      fill: lightblue;
+    }
+
+    .reveal .join {
+      stroke:           lightblue;
+      stroke-width:     4;
+      stroke-dasharray: 8, 8;
+    }
+
+    .reveal .join.hidden {
+      display: none;
+    }
+
+    .reveal .join.self {
+      fill: none;
+    }
+
+    .reveal ellipse.cluster {
+      fill:         none;
+      stroke:       green;
+      stroke-width: 4;
     }
   </style>
   </head>
@@ -42,9 +90,185 @@
 <!-- ########################################################################################### -->
 
 <section data-markdown><script type="text/template">
-# TODO
+# Akka Cluster up and running
+
+Heiko Seeberger
 </script></section>
 
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## The real Thing
+
+![The real thing](images/the-real-thing.jpg) <!-- .element: class="max" -->
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## What's Akka Cluster?
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Akka Cluster
+
+> Akka Cluster provides a fault-tolerant decentralized peer-to-peer based cluster **membership
+> service** with no single point of failure or single point of bottleneck.
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Cluster Membership
+
+- Membership is for actor systems
+- Nodes (actor systems) can join and leave
+- Reachability is tracked by a failure detector
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Foundation for powerful Features
+
+- Cluster Singleton
+- Cluster Sharding
+- Distributed Data
+- ...
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+  # Cluster Singleton
+  
+  ![Cluster Singleton](images/cluster-singleton.svg "Cluster Singleton")
+  </script></section>
+  
+<!-- ########################################################################################### -->
+
+<section data-markdown data-state="cluster-01"><script type="text/template">
+## Joining a Cluster
+<svg id="cluster-01">
+  <line x1="480" y1="160" x2="240" y2="240" class="fragment join" id="cluster-01-join"/>
+  <line x1="0" y1="0" x2="0" y2="0" class="fragment" id="cluster-01-joined"/>
+  <circle cx="480" cy="160" r="32" class="node member"/>
+  <circle cx="240" cy="240" r="32" class="node" id="cluster-01-joining-node"/>
+  <circle cx="720" cy="240" r="32" class="node member"/>
+  <ellipse cx="600" cy="200" rx="240" ry="80" class="cluster" id="cluster-01-cluster" transform="rotate(18 600 200)"/>
+</svg>
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Cluster Member States
+
+![Cluster Member States](images/member-states-weakly-up.png) <!-- .element: class="max" -->
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Bootstrapping a Cluster
+<svg id="cluster-02">
+  <circle cx="240" cy="192" r="40" class="fragment join self" id="cluster-02-join"/>
+  <circle cx="480" cy="160" r="32" class="node"/>
+  <circle cx="240" cy="240" r="32" class="node" id="cluster-02-joining-node"/>
+  <circle cx="720" cy="240" r="32" class="node"/>
+  <ellipse cx="240" cy="240" rx="180" ry="60" class="fragment cluster" id="cluster-02-joined"/>
+</svg>
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Seed Nodes
+
+- We start the first node and make it join itself
+- We start further ones and make them join existing ones
+- This is simplified by configuring known **seed nodes**
+
+```
+akka.cluster.seed-nodes = [
+  "akka://akkluster@127.0.0.1:25520",
+  "akka://akkluster@127.0.0.1:25521"
+]
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Akka Cluster Bootstrap
+
+- Part of [Akka Management](https://developer.lightbend.com/docs/akka-management/current)
+- Depends on a discovery mechanism, e.g. DNS or Kubernetes API
+
+```
+// Main.scala
+AkkaManagement(system.toUntyped).start()
+ClusterBootstrap(system.toUntyped).start()
+
+// application.conf
+akka {
+  discovery {
+    method = "kubernetes-api"
+  }
+}
+```
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Unreachable
+
+<svg id="cluster-03">
+  <circle cx="480" cy="160" r="32" class="node member" id="cluster-03-node-a"/>
+  <circle cx="240" cy="240" r="32" class="node member" id="cluster-03-node-b"/>
+  <circle cx="720" cy="240" r="32" class="node unreachable"  id="cluster-03-node-c"/>
+  <ellipse cx="480" cy="220" rx="360" ry="120" class="cluster"/>
+  <line x1="0" y1="0" x2="0" y2="0" class="fragment" id="cluster-03-switch-perspective"/>
+</svg>
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Unreachable is bad
+
+- Cluster convergence is impossible while nodes are unreachable:
+  - Joining nodes cannot become up
+  - Leaving nodes cannot exit
+  - Unreachable singletons and shards cannot be rebalanced
+- Unreachable nodes must become reachable or be downed
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Downing Provider aka Split Brain Resolver (SBR)
+
+- Downing can be performed manually or by a SBR:
+  - Implement `DowningProvider`
+  - Configure `akka.cluster.downing-provider-class`
+- Do not use `auto-down-unreachable-after` or live with split brains
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Summing it up
+
+- Akka Cluster is about membership enabling higher-level features
+- To bootstrap a cluster you need external coordination
+- To resolve lasting network partitions you need to employ a SBR
+- Pro tip: use a monitoring solution ;-)
+</script></section>
+  
 <!-- ########################################################################################### -->
 
 <section data-markdown><script type="text/template">
@@ -65,6 +289,7 @@
   </div>
   </div>
 
+  <script src="lib/js/d3.min.js"></script>
   <script src="lib/js/head.min.js"></script>
   <script src="js/reveal.js"></script>
 
@@ -81,6 +306,69 @@
   { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
   ]
   });
+
+  Reveal.addEventListener('fragmentshown', function(event) {
+    if (event.fragment.id == 'cluster-01-join') {
+      d3.select('#cluster-01-joining-node').classed('joining', true);
+    }
+  }, false);
+  Reveal.addEventListener('fragmenthidden', function(event) {
+    if (event.fragment.id == 'cluster-01-join') {
+      d3.select('#cluster-01-joining-node').classed('joining', false);
+    }
+  }, false);
+  Reveal.addEventListener('fragmentshown', function(event) {
+    if (event.fragment.id == 'cluster-01-joined') {
+      d3.select('#cluster-01-join').classed('hidden', true);
+      d3.select('#cluster-01-joining-node').classed('joining', false).classed('member', true);
+      d3.select('#cluster-01-cluster').attr('transform', 'rotate(0 600 200)').attr('cx', '480').attr('cy', '220').attr('rx', '360').attr('ry', '120');
+    }
+  }, false);
+  Reveal.addEventListener('fragmenthidden', function(event) {
+    if (event.fragment.id == 'cluster-01-joined') {
+      d3.select('#cluster-01-join').classed('hidden', false);
+      d3.select('#cluster-01-joining-node').classed('joining', true).classed('member', false);
+      d3.select('#cluster-01-cluster').attr('transform', 'rotate(18 600 200)').attr('cx', '600').attr('cy', '200').attr('rx', '240').attr('ry', '80');
+    }
+  }, false);
+
+  Reveal.addEventListener('fragmentshown', function(event) {
+    if (event.fragment.id == 'cluster-02-join') {
+      d3.select('#cluster-02-joining-node').classed('joining', true);
+    }
+  }, false);
+  Reveal.addEventListener('fragmenthidden', function(event) {
+    if (event.fragment.id == 'cluster-02-join') {
+      d3.select('#cluster-02-joining-node').classed('joining', false);
+    }
+  }, false);
+  Reveal.addEventListener('fragmentshown', function(event) {
+    if (event.fragment.id == 'cluster-02-joined') {
+      d3.select('#cluster-02-join').classed('hidden', true);
+      d3.select('#cluster-02-joining-node').classed('joining', false).classed('member', true);
+    }
+  }, false);
+  Reveal.addEventListener('fragmenthidden', function(event) {
+    if (event.fragment.id == 'cluster-02-joined') {
+      d3.select('#cluster-02-join').classed('hidden', false);
+      d3.select('#cluster-02-joining-node').classed('joining', true).classed('member', false);
+    }
+  }, false);
+
+  Reveal.addEventListener('fragmentshown', function(event) {
+    if (event.fragment.id == 'cluster-03-switch-perspective') {
+      d3.select('#cluster-03-node-a').classed('member', false).classed('unreachable', true);
+      d3.select('#cluster-03-node-b').classed('member', false).classed('unreachable', true);
+      d3.select('#cluster-03-node-c').classed('member', true).classed('unreachable', false);
+    }
+  }, false);
+  Reveal.addEventListener('fragmenthidden', function(event) {
+    if (event.fragment.id == 'cluster-03-switch-perspective') {
+      d3.select('#cluster-03-node-a').classed('member', true).classed('unreachable', false);
+      d3.select('#cluster-03-node-b').classed('member', true).classed('unreachable', false);
+      d3.select('#cluster-03-node-c').classed('member', false).classed('unreachable', true);
+    }
+  }, false);
   </script>
   </body>
 </html>

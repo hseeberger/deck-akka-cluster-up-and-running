@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-3.7053865 -3.6092217 726.8972 426.6439" width="726.8972" height="426.6439">
+  <defs>
+    <font-face font-family="HanziPen TC" font-size="24" panose-1="3 0 5 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HanziPenTC-W5"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="#666">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.7.1 
+    <dc:date>2018-05-11 10:38:47 +0000</dc:date>
+  </metadata>
+  <g id="Arbeitsfl_che_1" fill-opacity="1" stroke-dasharray="none" stroke="none" stroke-opacity="1" fill="none">
+    <title>Arbeitsfläche 1</title>
+    <g id="Arbeitsfl_che_1: Ebene 1">
+      <title>Ebene 1</title>
+      <g id="Graphic_11">
+        <path d="M -.41445463 -5872429e-13 L 280.83516 3979168e-10 M 280.25058 -.636923 L 279.64074 420.25924 M 280.27888 419.70735 L -1.3526935 419.60325 M -.3677884 420.3907 L 40532516e-11 -.4632961 M -.28945446 -.24889984 L 280.37465 -.14478334 M 280.44783 -.7618183 L 279.86273 419.58225 M 280.40384 419.6975 L -.24212865 419.5567 M -.3321834 420.26563 L .09745596 -.1250241" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(5 382.5)" fill="#666">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#666" x="98.592" y="25">Node A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <path d="M 79.38938 129.9985 L 200.97322 130.29727 M 200.38226 129.56594 L 200.14323 180.7087 M 201.11607 180.08776 L 79.80198 179.79864 M 80.23623 180.51854 L 79.99842 129.66138 M 79.51454 129.80779 L 200.50414 130.05262 M 200.62687 129.4415 L 200.33988 179.96077 M 201.2409 180.03082 L 80.35757 179.79764 M 80.27902 180.39392 L 80.11007 129.87507" stroke="#4e8f00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(85 138.5)" fill="#4e8f00">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#4e8f00" x="10.936" y="25">Singleton</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <path d="M 39.03171 40.001427 L 240.6971 39.704137 M 240.12028 39.16022 L 240.1371 90.80978 M 240.4417 90.32866 L 39.24263 90.40787 M 40.033494 91.26288 L 39.999616 39.41203 M 39.15663 39.81934 L 240.2454 39.53281 M 240.27018 39.035214 L 240.38558 90.20374 M 240.5667 90.24091 L 40.15795 90.31573 M 40.061915 91.13794 L 40.08484 39.875026" stroke="#b1001c" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(45 48.5)" fill="#b1001c">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#b1001c" x="4.4" y="25">Singleton Manager</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <path d="M 39.22788 219.99842 L 240.55905 220.41074 M 239.99453 219.95738 L 239.62936 270.3603 M 240.3545 269.9495 L 39.837955 270.21228 M 40.440933 271.135 L 39.993855 219.28738 M 39.353115 219.75814 L 240.1164 220.2104 M 240.22208 219.83312 L 239.78343 269.82564 M 240.47962 269.90885 L 40.55812 270.19977 M 40.462174 271.0109 L 40.07222 219.87546" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(45 228.5)" fill="#666">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#666" x="19.316" y="25">Singleton Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <path d="M 79.42404 309.99945 L 200.421 310.1147 M 199.86013 309.75452 L 200.12955 359.91086 M 200.51733 359.5707 L 79.43328 360.0169 M 79.82969 361.0072 L 80.0028 309.1627 M 79.54909 309.826 L 199.98716 309.888 M 200.04033 309.62922 L 200.30627 359.44683 M 200.64235 359.45213 L 79.95826 359.9588 M 79.84375 360.88184 L 80.0596 309.8748" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_16">
+        <line x1="140" y1="310" x2="140" y2="282.9" marker-end="url(#FilledArrow_Marker)" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_26">
+        <path d="M 439.52803 725256e-9 L 720.7643 -.43144145 M 720.3121 -1.1797385 L 720.0719 421.01735 M 720.9711 420.0333 L 439.32717 419.66237 M 439.63315 419.9732 L 440.00073 -.8334243 M 439.65285 -.24602536 L 720.4366 -.6058657 M 720.5491 -1.3046748 L 720.20544 419.90713 M 721.096 419.9799 L 439.7584 419.56735 M 439.686 419.84815 L 440.0332 -.1250802" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(445 382.5)" fill="#666">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#666" x="99.648" y="25">Node B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_23">
+        <path d="M 479.68954 219.9993 L 680.1785 220.45658 M 679.6999 220.17883 L 679.5853 270.61572 M 679.9827 270.16696 L 479.5412 270.25132 M 480.4407 271.10668 L 479.99604 219.54062 M 479.8147 219.8021 L 679.8245 220.23635 M 679.8289 220.05383 L 679.7619 270.04224 M 680.1077 270.09727 L 480.55833 270.16522 M 480.5151 270.98212 L 480.07104 219.87547" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(485 228.5)" fill="#666">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#666" x="19.316" y="25">Singleton Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22">
+        <path d="M 519.4934 310.00105 L 640.3165 309.74988 M 639.8265 309.3817 L 640.0936 360.06518 M 640.8198 359.54 L 519.6959 360.44953 M 520.0338 361.23455 L 519.9998 309.66528 M 519.61834 309.86206 L 639.95334 309.55876 M 640.0029 309.2564 L 640.23905 359.42034 M 640.9449 359.4232 L 520.1589 360.40617 M 520.1154 361.10957 L 520.08366 309.87503" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_21">
+        <line x1="580" y1="310" x2="580" y2="282.9" marker-end="url(#FilledArrow_Marker)" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_27">
+        <path d="M 479.7242 39.999623 L 680.6262 40.27445 M 680.1907 39.61746 L 679.5565 90.56782 M 680.1339 89.65149 L 479.1725 90.47023 M 480.0337 90.84538 L 479.99936 39.0419 M 479.8493 39.81968 L 680.3076 40.07173 M 680.3803 39.49326 L 679.7283 89.52924 M 680.2594 89.64519 L 480.1589 90.4514 M 480.0794 90.72043 L 480.02056 39.87507" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(485 48.5)" fill="#666">
+          <tspan font-family="HanziPen TC" font-size="24" font-weight="700" fill="#666" x="4.4" y="25">Singleton Manager</tspan>
+        </text>
+      </g>
+      <g id="Line_29">
+        <path d="M 480 245 L 464.1 245 L 360 245 L 360 200 L 360 155 L 215.9 155 L 212.9 155" marker-end="url(#FilledArrow_Marker)" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_31">
+        <line x1="140" y1="220" x2="140" y2="192.9" marker-end="url(#FilledArrow_Marker)" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_32">
+        <line x1="140" y1="90" x2="140" y2="117.1" marker-end="url(#FilledArrow_Marker)" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8.0,8.0" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
